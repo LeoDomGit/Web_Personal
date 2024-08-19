@@ -51,7 +51,7 @@ function Index() {
             {films.length>0 && films.map((item,index)=>(
               <div className="col-md-4 mb-3 shadow">
                <a style={{textDecoration:"none"}} href={"/vu-tru-phim/"+item.slug}>
-               <div class="card bg-dark border-light shadow">
+               <div class="card bg-dark shadow">
                   <div class="card-body">
                     <div className="row">
                       <img src={item.poster_url} className='img-fluid' style={{height:'300px',width:"auto",margin:'0px auto'}} alt="" />
