@@ -1,15 +1,19 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
 import Home from './Pages/Home';
-import "bootstrap/dist/css/bootstrap.min.css";
-import "bootstrap/dist/js/bootstrap.min.js";
+
 import Index from './Pages/film/Index';
 import New from './Pages/film/New';
 import Single from './Pages/film/Single';
 import Watch from './Pages/film/Watch';
 import CateFilm from './Pages/film/CateFilm';
 import CateFilm2 from './Pages/film/CateFilm2';
-
+import Tic from './Pages/Tic';
+import Dinosaur from './Pages/Dinosaur';
+import Taixiu from './session8/Taixiu';
+import KeoBuaBao from './Pages/KeoBuaBao';
+import NotFound from './Pages/NotFound';
+import Search from './Pages/film/Search';
 function App() {
   return (
     <>
@@ -20,9 +24,14 @@ function App() {
           <Route path='/vu-tru-phim/phim-moi' element={<New />} />
           <Route path='/vu-tru-phim/:id' element={<Single />} />
           <Route path='/vu-tru-phim/loai-phim/:id' element={<CateFilm />} />
+          <Route path='/vu-tru-phim/tim-kiem/:id' element={<Search />} />
           <Route path='/vu-tru-phim/quoc-gia/:id' element={<CateFilm2 />} />
           <Route path="/xem-phim/:slug/:episode" element={<Watch />} />
-
+          <Route path='/game' element={<Tic />} />
+          <Route path='/dinosaur' element={<Dinosaur />} />
+          <Route path="/taixiu" element={<Taixiu />} />
+          <Route path="/keobuabao" element={<KeoBuaBao />} />
+          <Route path='*' element={<NotFound />} />
         </Routes>
       </BrowserRouter>
     </>

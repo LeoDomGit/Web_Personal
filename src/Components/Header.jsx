@@ -1,8 +1,14 @@
 /* eslint-disable */
-import React from 'react'
+import React, { useState } from 'react'
 import "../css/navbar.css";
 
 function Header() {
+  const [search,setSearch] = useState('');
+  const submitSearch=()=>{
+    if(search!=''){
+      window.location.replace('/vu-tru-phim/tim-kiem/'+search)
+    }
+  }
   return (
     <>
       <nav className="navbar navbar-expand-sm navbar-dark bg-dark">
@@ -137,17 +143,18 @@ function Header() {
               </li>
 
             </ul>
-            <form className="d-flex">
+            <div className="d-flex">
               <input
                 className="form-control me-2"
                 type="search"
                 placeholder="Search"
                 aria-label="Search"
+                onChange={(e)=>setSearch(e.target.value)}
               />
-              <button className="btn btn-outline-success" type="submit">
+              <button className="btn btn-outline-success" type="button" onClick={(e)=>submitSearch()}>
                 Search
               </button>
-            </form>
+            </div>
           </div>
         </div>
       </nav>

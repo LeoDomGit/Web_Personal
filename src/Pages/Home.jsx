@@ -1,11 +1,17 @@
+/* eslint-disable */
 import React from 'react'
 
 function Home() {
   return (
     <>
     <div className="container pt-5">
+      <div className="row text-center pt-5" >
+        <h4>Các dự án demo </h4>
+        <p>Mời anh/ chị tham khảo </p>
+      </div>
       <div className="row pt-5" >
         <div className="col-md-6">
+          <a href='/vu-tru-phim'>
           <div class="card shadow ">
             <div class="card-body">
               <div className="row">
@@ -18,11 +24,60 @@ function Home() {
               </div>
             </div>
           </div>
-          
+          </a>
             
         </div>
         <div className="col-md-6">
+        <a href='/game'>
 
+          <div class="card shadow ">
+            <div class="card-body">
+              <div className="row">
+                <img className='img-fluid' style={{height:300,width:'auto',margin:'0px auto'}} src="https://i.ytimg.com/vi/spyxd5suVJQ/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLCRGeqq5Bco0c9mrXMpVJLE0QEugQ" alt="" />
+              </div>
+              <div className="row mt-3">
+                <div className="col-md text-center">
+                <a href='/game' className='btn btn-primary' >Vũ trụ Game</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          </a>
+            
+        </div>
+        <div className="col-md-6 mt-3 mb-5">
+        <a href='https://frontend.codingfs.com' target='_blank'>
+          <div class="card shadow ">
+            <div class="card-body">
+              <div className="row">
+                <img className='img-fluid' style={{height:300,width:'auto',margin:'0px auto'}} src="./img/ecoomerce.png" alt="" />
+              </div>
+              <div className="row mt-3">
+                <div className="col-md text-center">
+                <a href='https://frontend.codingfs.com' className='btn btn-primary' target='_blank'>Đến website</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          </a>
+            
+        </div>
+        <div className="col-md-6 mt-3 mb-5">
+        <a href='https://news.trungthanhweb.com' target='_blank'>
+          <div class="card shadow ">
+            <div class="card-body">
+              <div className="row">
+                <img className='img-fluid' style={{height:300,width:'auto',margin:'0px auto'}} src="./img/news.png" alt="" />
+              </div>
+              <div className="row mt-3">
+                <div className="col-md text-center">
+                <a href='https://news.trungthanhweb.com' className='btn btn-primary' target='_blank'>Đến website</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          </a>
+            
         </div>
       </div>
     </div>
