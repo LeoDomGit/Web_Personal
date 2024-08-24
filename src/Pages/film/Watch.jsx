@@ -26,7 +26,7 @@ function Watch() {
 					setIframeUrl(initialEpisode?.embed || null);
 				}
 			} catch (err) {
-				console.error(err);
+				window.location.replace('/vu-tru-phim')
 			}
 		};
 
@@ -48,6 +48,10 @@ function Watch() {
 
 	return (
 		<>
+		 <Helmet>
+                <title>Xem phim {slug}</title>
+                <meta name="description" content={'Xem phim ' + slug} />
+            </Helmet>
 			<Header />
             <div className="bg-dark text-light">
             <div className="container pt-3 ">

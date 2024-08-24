@@ -6,37 +6,42 @@ import "../../css/film.css";
 import { useParams } from 'react-router-dom';
 import Footer from '../../Components/Footer';
 import axios from 'axios';
+import { Helmet } from 'react-helmet';
 function CateFilm2() {
     const { id } = useParams();
     const [films, setFilms] = useState([]);
     const [error, setError] = useState(null);
-    const [page,setPage]= useState(1);
+    const [page, setPage] = useState(1);
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get(`https://phim.nguonc.com/api/films/quoc-gia/`+id+`?page=`+page);
+                const response = await axios.get(`https://phim.nguonc.com/api/films/quoc-gia/` + id + `?page=` + page);
                 setFilms(response.data.items);
-                setError(null); // Clear any previous error
+                setError(null); 
             } catch (err) {
                 if (err.response && err.response.status === 404) {
-                    // Handle 404 Not Found error
-                    setError('The requested resource was not found.');
+                    window.location.replace('/vu-tru-phim')
+
                 } else {
                     // Handle other errors
-                    setError('An error occurred while fetching data.');
-                    console.error('Error fetching data:', err);
+                    window.location.replace('/vu-tru-phim')
+
                 }
             }
         };
 
         fetchData();
-    }, [id,page]);
+    }, [id, page]);
 
     if (error) {
         return <p>{error}</p>; // Display error message
     }
     return (
         <>
+            <Helmet>
+                <title>Quốc Gia {id}</title>
+                <meta name="description" content={'Quốc Gia ' + id} />
+            </Helmet>
             <Header />
             <div className="bg-dark text-light">
                 <div className="container pt-3 ">

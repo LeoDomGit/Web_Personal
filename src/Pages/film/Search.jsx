@@ -6,6 +6,7 @@ import "../../css/film.css";
 import { useParams } from 'react-router-dom';
 import Footer from '../../Components/Footer';
 import axios from 'axios';
+import { Helmet } from 'react-helmet';
 function Search() {
     const { id } = useParams();
     const [films, setFilms] = useState([]);
@@ -15,12 +16,14 @@ function Search() {
         const fetchData = async () => {
             try {
                 const response = await axios.get(`https://phim.nguonc.com/api/films/search?keyword=`+id+`&page=`+page);
+                if(response.data.items.length==0){
+                    window.location.replace('/vu-tru-phim')
+                }
                 setFilms(response.data.items);
                 setError(null); // Clear any previous error
             } catch (err) {
                 if (err.response && err.response.status === 404) {
                     // Handle 404 Not Found error
-                    setError('The requested resource was not found.');
                 } else {
                     // Handle other errors
                     setError('An error occurred while fetching data.');
@@ -37,6 +40,10 @@ function Search() {
     }
     return (
         <>
+         <Helmet>
+        <title>Tìm kiếm</title>
+        <meta name="description" content={'Tìm kiếm'} />
+      </Helmet>
             <Header />
             <div className="bg-dark text-light">
                 <div className="container pt-3 ">

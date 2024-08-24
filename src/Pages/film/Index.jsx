@@ -6,6 +6,7 @@ import 'swiper/css';
 import "../../css/film.css";
 import { Pagination } from 'swiper/modules';
 import Footer from '../../Components/Footer';
+import { Helmet } from 'react-helmet';
 function Index() {
   const [films, setFilms] = useState([]);
   const [newFilms, setNewFilms] = useState([]);
@@ -21,6 +22,10 @@ function Index() {
   }, [])
   return (
     <>
+      <Helmet>
+        <title>Vũ trụ phim</title>
+        <meta name="description" content='Vũ trụ phim' />
+      </Helmet>
       <Header />
       <div className="bg-dark text-light">
         <div className="container pt-3 ">
@@ -35,9 +40,11 @@ function Index() {
           >
             {films.map((film) => (
               <SwiperSlide key={film.slug}>
+                <a href={"/vu-tru-phim/"+film.slug}>
                 <img src={film.poster_url} alt={film.name} style={{ width: '100%', borderRadius: '10px' }} />
                 <div className="text-center mt-2">
                 </div>
+                </a>
               </SwiperSlide>
             ))}
           </Swiper>
