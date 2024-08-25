@@ -6,6 +6,7 @@ import { Button, Card, Col, Collapse, Container, Row } from "react-bootstrap";
 import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 import Video from "../../containers/Video";
+import { Helmet } from 'react-helmet';
 
 function Watch() {
 	const { slug, episode: selectedEpisodeSlug } = useParams();
