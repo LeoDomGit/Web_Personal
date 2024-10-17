@@ -9,7 +9,7 @@ function Home() {
         <h4>Các dự án demo </h4>
         <p>Mời anh/ chị tham khảo </p>
       </div>
-      <div className="row pt-5" >
+      <div className="row text-center pt-5 justify-content-center" >
         <div className="col-md-6">
           <a href='/vu-tru-phim'>
           <div class="card shadow ">
@@ -79,7 +79,24 @@ function Home() {
           </a>
             
         </div>
-      </div>
+        <div className="col-md-6 mt-3 mb-5">
+        <a href='https://frontend.onggiaothanh.com/' target='_blank'>
+          <div class="card shadow ">
+            <div class="card-body">
+              <div className="row">
+                <img className='img-fluid' style={{height:300,width:'auto',margin:'0px auto'}} src="https://kernel-technology.com/wp-content/uploads/2024/01/What-is-Artiificial-IntelligenceAI-1.webp" alt="" />
+              </div>
+              <div className="row mt-3">
+                <div className="col-md text-center">
+                <a href='https://frontend.onggiaothanh.com/' className='btn btn-primary' target='_blank'>Đến website</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          </a>
+            
+        </div>
+      </div>  
     </div>
     </>
   )
