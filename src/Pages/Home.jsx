@@ -54,7 +54,7 @@ function Home() {
               </div>
               <div className="row mt-3">
                 <div className="col-md text-center">
-                <a href='https://frontend.codingfs.com' className='btn btn-primary' target='_blank'>Đến website</a>
+                <a href='https://frontend.trungthanhzone.com' className='btn btn-primary' target='_blank'>Đến website</a>
                 </div>
               </div>
             </div>
