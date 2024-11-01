@@ -130,15 +130,15 @@ const TicTacToe = () => {
                 ))}
             </div>
             {winner && (
-                <div style={styles.result}>
+                <div style={styles.result}className='text-center'>
                     <h3>{winner === 'X' ? 'You win!' : 'Computer wins!'}</h3>
-                    <button onClick={resetGame} style={styles.resetButton}>Play Again</button>
+                    <button className='btn text-center btn-outline-primary' onClick={resetGame} style={styles.resetButton}>Play Again</button>
                 </div>
             )}
             {!winner && !board.includes(null) && (
-                <div style={styles.result}>
+                <div style={styles.result} className='text-center'>
                     <h3>It's a Draw!</h3>
-                    <button onClick={resetGame} style={styles.resetButton}>Play Again</button>
+                    <button className='btn btn-outline-primary' onClick={resetGame} style={styles.resetButton}>Play Again</button>
                 </div>
             )}
         </div>

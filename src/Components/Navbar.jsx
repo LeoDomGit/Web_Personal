@@ -44,8 +44,8 @@ function Navbar() {
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/taixiu">
-                  Tài xỉu
+                <Link className="nav-link" to="/lat-hinh">
+                  Trúc xanh
                 </Link>
               </li>
               <li className="nav-item">

@@ -10,17 +10,18 @@ import CateFilm from './Pages/film/CateFilm';
 import CateFilm2 from './Pages/film/CateFilm2';
 import Tic from './Pages/Tic';
 import Dinosaur from './Pages/Dinosaur';
-import Taixiu from './session8/Taixiu';
 import KeoBuaBao from './Pages/KeoBuaBao';
 import NotFound from './Pages/NotFound';
 import Search from './Pages/film/Search';
 import TicTacToe from './Pages/TicTacToe';
+import Flip from './Pages/Flip';
 function App() {
   return (
     <>
       <BrowserRouter>
         <Routes>
           <Route path='/' element={<Home />} />
+          <Route path='/tic-tac-toe' element={<TicTacToe />} />
           <Route path='/tic-tac-toe' element={<TicTacToe />} />
           <Route path='/vu-tru-phim' element={<Index />} />
           <Route path='/vu-tru-phim/phim-moi' element={<New />} />
@@ -30,8 +31,9 @@ function App() {
           <Route path='/vu-tru-phim/quoc-gia/:id' element={<CateFilm2 />} />
           <Route path="/xem-phim/:slug/:episode" element={<Watch />} />
           <Route path='/game' element={<Tic />} />
+          <Route path='/lat-hinh' element={<Flip />} />
           <Route path='/dinosaur' element={<Dinosaur />} />
-          <Route path="/taixiu" element={<Taixiu />} />
+          <Route path='/dinosaur' element={<Dinosaur />} />
           <Route path="/keobuabao" element={<KeoBuaBao />} />
           <Route path='*' element={<NotFound />} />
         </Routes>
