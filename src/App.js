@@ -14,12 +14,14 @@ import Taixiu from './session8/Taixiu';
 import KeoBuaBao from './Pages/KeoBuaBao';
 import NotFound from './Pages/NotFound';
 import Search from './Pages/film/Search';
+import TicTacToe from './Pages/TicTacToe';
 function App() {
   return (
     <>
       <BrowserRouter>
         <Routes>
           <Route path='/' element={<Home />} />
+          <Route path='/tic-tac-toe' element={<TicTacToe />} />
           <Route path='/vu-tru-phim' element={<Index />} />
           <Route path='/vu-tru-phim/phim-moi' element={<New />} />
           <Route path='/vu-tru-phim/:id' element={<Single />} />
