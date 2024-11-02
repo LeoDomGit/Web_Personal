@@ -1,4 +1,3 @@
-// src/App.js
 import React, { useState, useEffect } from "react";
 import "../css/flip.css";
 import animalIcons from "./animalIcons"; 
@@ -39,31 +38,30 @@ const Flip = () => {
 
   return (
     <>
-    <Navbar/>
-    <div className="mt-4 align-middle">
-      <div className="grid">
-        {tiles.map((tile, index) => (
-          <div
-            key={index}
-            className={`tile ${selectedTiles.includes(index) || matchedPairs.includes(tile) ? "flip" : ""}`}
-            onClick={() => handleTileClick(index)}
-          >
-            <div className="tile-inner">
-              {/* Front of the card (hidden initially) */}
-              <div className="tile-front"></div>
-              {/* Back of the card (shows animal when flipped) */}
-              <div className="tile-back">
-                {(selectedTiles.includes(index) || matchedPairs.includes(tile)) && (
-                  <img src={tile} alt="animal" />
-                )}
+      <Navbar />
+      <div className="game_container mt-4 align-middle">
+        <div className="game_grid">
+          {tiles.map((tile, index) => (
+            <div
+              key={index}
+              className={`game_tile ${selectedTiles.includes(index) || matchedPairs.includes(tile) ? "flip" : ""}`}
+              onClick={() => handleTileClick(index)}
+            >
+              <div className="game_tile-inner">
+                {/* Front of the card (hidden initially) */}
+                <div className="game_tile-front"></div>
+                {/* Back of the card (shows animal when flipped) */}
+                <div className="game_tile-back">
+                  {(selectedTiles.includes(index) || matchedPairs.includes(tile)) && (
+                    <img src={tile} alt="animal" />
+                  )}
+                </div>
               </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
-    </div>
     </>
-    
   );
 };
 
