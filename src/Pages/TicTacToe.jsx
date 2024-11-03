@@ -11,7 +11,7 @@ const checkWinner = (board) => {
         [0, 3, 6],
         [1, 4, 7],
         [2, 5, 8],
-        [0, 4, 8],
+        [0, 4, 8], // Winning combination for user win case
         [2, 4, 6],
     ];
     for (let combo of winningCombinations) {
@@ -36,13 +36,15 @@ const TicTacToe = () => {
         newBoard[index] = 'X';
         setBoard(newBoard);
 
+        // Check for a winner after player's move
         const currentWinner = checkWinner(newBoard);
         if (currentWinner) {
             setWinner(currentWinner);
-        } else {
-            setIsPlayerTurn(false);
-            setTimeout(() => computerMove(newBoard), 500); // Delay for computer's move
-        }
+            return; // Stop further moves if there's a winner
+        } 
+
+        setIsPlayerTurn(false);
+        setTimeout(() => computerMove(newBoard), 500); // Delay for computer's move
     };
 
     const computerMove = (newBoard) => {
@@ -50,6 +52,7 @@ const TicTacToe = () => {
         newBoard[bestMove] = 'O';
         setBoard(newBoard);
 
+        // Check for a winner after computer's move
         const currentWinner = checkWinner(newBoard);
         if (currentWinner) {
             setWinner(currentWinner);
@@ -130,7 +133,7 @@ const TicTacToe = () => {
                 ))}
             </div>
             {winner && (
-                <div style={styles.result}className='text-center'>
+                <div style={styles.result} className='text-center'>
                     <h3>{winner === 'X' ? 'You win!' : 'Computer wins!'}</h3>
                     <button className='btn text-center btn-outline-primary' onClick={resetGame} style={styles.resetButton}>Play Again</button>
                 </div>
@@ -143,7 +146,6 @@ const TicTacToe = () => {
             )}
         </div>
         </>
-
     );
 };
 
