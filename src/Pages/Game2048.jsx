@@ -107,6 +107,7 @@ const Game2048 = () => {
     const handleTouchStart = (e) => {
         const touch = e.touches[0];
         setTouchStart({ x: touch.clientX, y: touch.clientY });
+        e.preventDefault(); // Prevent default touch behavior (scrolling)
     };
 
     const handleTouchEnd = (e) => {
@@ -130,6 +131,7 @@ const Game2048 = () => {
                 moveBoard(moveUp(board, setScore));
             }
         }
+        e.preventDefault(); // Prevent default touch behavior (scrolling)
     };
 
     useEffect(() => {
