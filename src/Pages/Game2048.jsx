@@ -119,7 +119,6 @@ const Game2048 = () => {
         <>
         <Navbar/>
         <div style={styles.container}>
-            <h1>2048 Game</h1>
             <div style={styles.board}>
                 {board.map((row, rowIndex) => (
                     <div style={styles.row} key={rowIndex}>
@@ -131,9 +130,9 @@ const Game2048 = () => {
                     </div>
                 ))}
             </div>
-            <h2>Score: {score}</h2>
+            <h2 className='mt-3'>Score: {score}</h2>
             {gameOver && <h2>Game Over!</h2>}
-            <button style={styles.button} onClick={resetGame}>Restart</button>
+            <button style={styles.button} className='btn btn-outline-primary' onClick={resetGame}>Restart</button>
         </div>
         </>
         
