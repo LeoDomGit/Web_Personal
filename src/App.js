@@ -15,6 +15,7 @@ import NotFound from './Pages/NotFound';
 import Search from './Pages/film/Search';
 import TicTacToe from './Pages/TicTacToe';
 import Flip from './Pages/Flip';
+import Game2048 from './Pages/Game2048';
 function App() {
   return (
     <>
@@ -22,6 +23,7 @@ function App() {
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/tic-tac-toe' element={<TicTacToe />} />
+          <Route path='/2048' element={<Game2048 />} />
           <Route path='/tic-tac-toe' element={<TicTacToe />} />
           <Route path='/vu-tru-phim' element={<Index />} />
           <Route path='/vu-tru-phim/phim-moi' element={<New />} />

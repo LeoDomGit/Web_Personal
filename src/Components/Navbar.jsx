@@ -1,4 +1,4 @@
-/*eslint-disable*/
+/* eslint-disable */
 import React from "react";
 import { Link } from "react-router-dom";
 
@@ -51,6 +51,10 @@ function Navbar() {
               <li className="nav-item">
                 <Link className="nav-link" to="/keobuabao">
                   Kéo búa bao
+                </Link>
+              </li>  <li className="nav-item">
+                <Link className="nav-link" to="/2048">
+                 2048
                 </Link>
               </li>
             </ul>
