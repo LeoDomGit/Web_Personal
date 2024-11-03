@@ -28,13 +28,11 @@ const initializeBoard = () => {
     return newBoard;
 };
 
-// Add a parameter for updating the score when merging tiles
 const moveLeft = (board, setScore) => {
     let newScore = 0;
     let newBoard = board.map(row => {
         let filteredRow = row.filter(tile => tile !== 0);
         for (let i = 0; i < filteredRow.length - 1; i++) {
-            // Check both cells are valid numbers before merging
             if (filteredRow[i] === filteredRow[i + 1] && filteredRow[i] !== 0) {
                 filteredRow[i] *= 2;
                 newScore += filteredRow[i];
@@ -76,7 +74,8 @@ const Game2048 = () => {
     const [board, setBoard] = useState(initializeBoard);
     const [gameOver, setGameOver] = useState(false);
     const [score, setScore] = useState(0);
-
+    const [touchStart, setTouchStart] = useState({ x: 0, y: 0 });
+    
     const moveBoard = (newBoard) => {
         if (JSON.stringify(newBoard) !== JSON.stringify(board)) {
             setBoard(addRandomTile(newBoard));
@@ -104,6 +103,35 @@ const Game2048 = () => {
         }
     };
 
+    // Touch event handlers for mobile support
+    const handleTouchStart = (e) => {
+        const touch = e.touches[0];
+        setTouchStart({ x: touch.clientX, y: touch.clientY });
+    };
+
+    const handleTouchEnd = (e) => {
+        const touch = e.changedTouches[0];
+        const dx = touch.clientX - touchStart.x;
+        const dy = touch.clientY - touchStart.y;
+        
+        if (gameOver) return;
+
+        // Determine if the swipe is horizontal or vertical and in which direction
+        if (Math.abs(dx) > Math.abs(dy)) {
+            if (dx > 0) {
+                moveBoard(moveRight(board, setScore));
+            } else {
+                moveBoard(moveLeft(board, setScore));
+            }
+        } else {
+            if (dy > 0) {
+                moveBoard(moveDown(board, setScore));
+            } else {
+                moveBoard(moveUp(board, setScore));
+            }
+        }
+    };
+
     useEffect(() => {
         window.addEventListener('keydown', handleKeyDown);
         return () => window.removeEventListener('keydown', handleKeyDown);
@@ -116,9 +144,13 @@ const Game2048 = () => {
     };
 
     return (
-        <>
-        <Navbar/>
-        <div style={styles.container}>
+      <>
+      <Navbar/>
+      <div
+            style={styles.container}
+            onTouchStart={handleTouchStart}
+            onTouchEnd={handleTouchEnd}
+        >
             <div style={styles.board}>
                 {board.map((row, rowIndex) => (
                     <div style={styles.row} key={rowIndex}>
@@ -130,12 +162,11 @@ const Game2048 = () => {
                     </div>
                 ))}
             </div>
-            <h2 className='mt-3'>Score: {score}</h2>
+            <h2 className='mt-4'>Score: {score}</h2>
             {gameOver && <h2>Game Over!</h2>}
-            <button style={styles.button} className='btn btn-outline-primary' onClick={resetGame}>Restart</button>
+            <button className='btn btn-outline-danger' style={styles.button} onClick={resetGame}>Restart</button>
         </div>
-        </>
-        
+      </>
     );
 };
 
@@ -157,6 +188,9 @@ const tileColors = {
 const styles = {
     container: {
         textAlign: 'center',
+        maxWidth: '400px',
+        margin: '0 auto',
+        padding: '20px',
     },
     board: {
         display: 'inline-block',
