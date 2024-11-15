@@ -116,13 +116,13 @@ function AIComponent() {
           </div>
           <div className="col-md d-flex align-items-center justify-content-center">
             <div className="row text-center">
-              <button
-                className="btn btn-primary mt-3"
-                onClick={transferStyle}
-                disabled={usageCount >= 2}
-              >
-                Magic Image
-              </button>
+            <button
+  className="btn btn-primary mt-3"
+  onClick={transferStyle}
+  disabled={loading || usageCount >= 2}
+>
+  Magic Image
+</button>
             </div>
           </div>
           <div className="col-md-5 d-flex justify-content-center align-items-center mt-3">
