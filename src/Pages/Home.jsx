@@ -79,7 +79,7 @@ function Home() {
           </a>
             
         </div>
-        <div className="col-md-6 mt-3 mb-5">
+{/*         <div className="col-md-6 mt-3 mb-5">
         <a href='https://frontend.onggiaothanh.com/' target='_blank'>
           <div class="card shadow ">
             <div class="card-body">
@@ -95,7 +95,7 @@ function Home() {
           </div>
           </a>
             
-        </div>
+        </div> */}
       </div>  
     </div>
     </>
