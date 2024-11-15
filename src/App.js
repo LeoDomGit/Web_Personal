@@ -16,6 +16,7 @@ import Search from './Pages/film/Search';
 import TicTacToe from './Pages/TicTacToe';
 import Flip from './Pages/Flip';
 import Game2048 from './Pages/Game2048';
+import AIComponent from './Pages/AIComponent';
 function App() {
   return (
     <>
@@ -27,6 +28,7 @@ function App() {
           <Route path='/tic-tac-toe' element={<TicTacToe />} />
           <Route path='/vu-tru-phim' element={<Index />} />
           <Route path='/vu-tru-phim/phim-moi' element={<New />} />
+          <Route path='/ai' element={<AIComponent />} />
           <Route path='/vu-tru-phim/:id' element={<Single />} />
           <Route path='/vu-tru-phim/loai-phim/:id' element={<CateFilm />} />
           <Route path='/vu-tru-phim/tim-kiem/:id' element={<Search />} />

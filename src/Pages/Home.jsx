@@ -79,8 +79,8 @@ function Home() {
           </a>
             
         </div>
-{/*         <div className="col-md-6 mt-3 mb-5">
-        <a href='https://frontend.onggiaothanh.com/' target='_blank'>
+        <div className="col-md-6 mt-3 mb-5">
+        <a href='/ai' target='_blank'>
           <div class="card shadow ">
             <div class="card-body">
               <div className="row">
@@ -88,14 +88,14 @@ function Home() {
               </div>
               <div className="row mt-3">
                 <div className="col-md text-center">
-                <a href='https://frontend.onggiaothanh.com/' className='btn btn-primary' target='_blank'>Đến website</a>
+                <a href='/ai' className='btn btn-primary' target='_blank'>Đến website</a>
                 </div>
               </div>
             </div>
           </div>
           </a>
             
-        </div> */}
+        </div>
       </div>  
     </div>
     </>
