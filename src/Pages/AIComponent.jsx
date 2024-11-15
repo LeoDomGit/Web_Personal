@@ -7,6 +7,7 @@ import {
   ReactCompareSlider,
   ReactCompareSliderImage,
 } from "react-compare-slider";
+import Loading from "../Components/Loading";
 
 function AIComponent() {
   const [image, setImage] = useState("https://static.thenounproject.com/png/562976-200.png");
@@ -45,7 +46,7 @@ function AIComponent() {
         formData.append("platform", "android");
         formData.append("image", file);
         formData.append("slug", "new-profile-picture");
-
+        setLoading(true);
         axios
           .post(
             "https://toonappbackend.trungthanhzone.com/api/effect",
@@ -62,6 +63,7 @@ function AIComponent() {
               const newCount = usageCount + 1;
               setUsageCount(newCount);
               localStorage.setItem("usageCount", newCount);
+              setLoading(false)
             }
           });
       }
@@ -80,6 +82,9 @@ function AIComponent() {
       }}
       className="d-flex align-items-center justify-content-center min-vh-100"
     >
+        {loading &&(
+        <Loading/>
+        )}
       <div className="container card shadow p-5">
         <div className="row">
           <div className="col-md-5 round">
