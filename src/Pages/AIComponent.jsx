@@ -63,7 +63,8 @@ function AIComponent() {
               ) : loading ? (
                 <Loading />
               ) : (
-                <ReactCompareSlider
+               <div className="row mt-4 mb-4">
+ <ReactCompareSlider
                   itemOne={
                     files.length > 0 ? (
                       <ReactCompareSliderImage
@@ -85,6 +86,7 @@ function AIComponent() {
                     )
                   }
                 />
+               </div>
               )}
             </div>
           </div>
