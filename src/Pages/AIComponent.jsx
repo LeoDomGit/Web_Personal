@@ -61,9 +61,14 @@ function AIComponent() {
                   <img className="img-fluid" src="https://codingartistweb.com/wp-content/uploads/2021/04/image-comparison-slider-01.png" alt="" />
               </div>
               ) : loading ? (
+                <div
+                className="d-flex align-items-center justify-content-center"
+                style={{ minHeight: "300px", width: "100%" }}
+              >
                 <Loading />
+                </div>
               ) : (
-               <div className="row">
+               <div className="row mt-4 mb-4">
  <ReactCompareSlider
                   itemOne={
                     files.length > 0 ? (
