@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 import { Dropzone, FileMosaic } from "@dropzone-ui/react";
-import { ReactCompareSlider, ReactCompareSliderImage } from "react-compare-slider";
+import {
+  ReactCompareSlider,
+  ReactCompareSliderImage,
+} from "react-compare-slider";
+import "../css/ai.css";
 import axios from "axios";
 import Loading from "../Components/Loading";
 
@@ -21,11 +25,15 @@ function AIComponent() {
 
       try {
         // Send the image to the API
-        const response = await axios.post("https://backend.morin.id.vn/api/image", formData, {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        });
+        const response = await axios.post(
+          "https://backend.morin.id.vn/api/image",
+          formData,
+          {
+            headers: {
+              "Content-Type": "multipart/form-data",
+            },
+          }
+        );
 
         // Update the processed image URL from the API response
         setApiImageUrl(response.data.url);
@@ -40,64 +48,71 @@ function AIComponent() {
 
   return (
     <>
-      <div className="container-fluid text-middle pt-5">
+      <div className="container text-middle pt-5">
         <div className="row">
-          <div className="col-md-6">
-          <div className=" border-0 shadow">
-          <div className="row m-3 d-flex justify-content-center">
-            <div className="col-md-3 pt-5">
-              <Dropzone onChange={updateFiles} value={files}>
-                {files.map((file) => (
-                  <FileMosaic {...file} preview />
-                ))}
-              </Dropzone>
-              <h5 style={{fontSize:'17px'}} className="mt-4">Please upload an image</h5>
-            </div>
-            <div className="col-md text-center">
-              {files.length === 0 ? (
-                // <img src="https://www.giantfocal.com/hubfs/GiantFocal_Marketing/Growth_Tools/before-after-comparison.jpg" alt="" />
-                <div
-                className="d-flex align-items-center justify-content-center"
-                style={{ minHeight: "300px", width: "100%" }}
-              >
-                  <img className="img-fluid" src="https://codingartistweb.com/wp-content/uploads/2021/04/image-comparison-slider-01.png" alt="" />
-              </div>
-              ) : loading ? (
-                <div
-                className="d-flex align-items-center justify-content-center"
-                style={{ minHeight: "300px", width: "100%" }}
-              >
-                <Loading />
+          <div className="col-md">
+            <div className="card border-0 shadow">
+            <h4 className="text-center pt-3">Cartoon Generation</h4>
+              <div className="row m-3 d-flex justify-content-center">
+                <div className="col-md-3  pt-5">
+                  <Dropzone onChange={updateFiles} value={files}>
+                    {files.map((file) => (
+                      <FileMosaic {...file} preview />
+                    ))}
+                  </Dropzone>
+                  <h5 style={{ fontSize: "17px" }} className="mt-4">
+                    Please upload an image
+                  </h5>
                 </div>
-              ) : (
-               <div className="row mt-4 mb-4">
- <ReactCompareSlider
-                  itemOne={
-                    files.length > 0 ? (
-                      <ReactCompareSliderImage
-                        src={URL.createObjectURL(files[0].file)}
-                        alt="Uploaded image"
+                <div className="col-md w-100 text-center">
+                  {files.length === 0 ? (
+                    // <img src="https://www.giantfocal.com/hubfs/GiantFocal_Marketing/Growth_Tools/before-after-comparison.jpg" alt="" />
+                    <div
+                      className="d-flex align-items-center justify-content-center"
+                      style={{ minHeight: "300px", width: "100%" }}
+                    >
+                      <img
+                        className="img-fluid"
+                        src="https://codingartistweb.com/wp-content/uploads/2021/04/image-comparison-slider-01.png"
+                        alt=""
                       />
-                    ) : (
-                      <p>Please upload an image</p>
-                    )
-                  }
-                  itemTwo={
-                    apiImageUrl ? (
-                      <ReactCompareSliderImage
-                        src={apiImageUrl}
-                        alt="AI-processed image"
+                    </div>
+                  ) : loading ? (
+                    <div
+                      className="d-flex align-items-center justify-content-center"
+                      style={{ minHeight: "300px", width: "100%" }}
+                    >
+                      <Loading />
+                    </div>
+                  ) : (
+                    <div className="row mt-4 mb-4">
+                      <ReactCompareSlider
+                        itemOne={
+                          files.length > 0 ? (
+                            <ReactCompareSliderImage
+                              src={URL.createObjectURL(files[0].file)}
+                              alt="Uploaded image"
+                            />
+                          ) : (
+                            <p>Please upload an image</p>
+                          )
+                        }
+                        itemTwo={
+                          apiImageUrl ? (
+                            <ReactCompareSliderImage
+                              src={apiImageUrl}
+                              alt="AI-processed image"
+                            />
+                          ) : (
+                            <p>Waiting for AI-processed image</p>
+                          )
+                        }
                       />
-                    ) : (
-                      <p>Waiting for AI-processed image</p>
-                    )
-                  }
-                />
-               </div>
-              )}
+                    </div>
+                  )}
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
           </div>
         </div>
       </div>
