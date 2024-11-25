@@ -40,8 +40,10 @@ function AIComponent() {
 
   return (
     <>
-      <div className="container text-middle pt-5">
-        <div className=" border-0 shadow">
+      <div className="container-fluid text-middle pt-5">
+        <div className="row">
+          <div className="col-md-6">
+          <div className=" border-0 shadow">
           <div className="row m-3 d-flex justify-content-center">
             <div className="col-md-3 pt-5">
               <Dropzone onChange={updateFiles} value={files}>
@@ -49,7 +51,7 @@ function AIComponent() {
                   <FileMosaic {...file} preview />
                 ))}
               </Dropzone>
-              <h5 className="mt-4">Please upload an image</h5>
+              <h5 style={{fontSize:'17px'}} className="mt-4">Please upload an image</h5>
             </div>
             <div className="col-md text-center">
               {files.length === 0 ? (
@@ -94,6 +96,8 @@ function AIComponent() {
                </div>
               )}
             </div>
+          </div>
+        </div>
           </div>
         </div>
       </div>
