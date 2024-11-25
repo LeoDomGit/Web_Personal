@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Dropzone, FileMosaic } from "@dropzone-ui/react";
 import { ReactCompareSlider, ReactCompareSliderImage } from "react-compare-slider";
 import axios from "axios";
+import Loading from "../Components/Loading";
 
 function AIComponent() {
   const [files, setFiles] = useState([]);
@@ -40,20 +41,27 @@ function AIComponent() {
   return (
     <>
       <div className="container text-middle pt-5">
-        <div className="card border-0 shadow">
+        <div className=" border-0 shadow">
           <div className="row m-3 d-flex justify-content-center">
-            <div className="col-md-3">
+            <div className="col-md-3 pt-5">
               <Dropzone onChange={updateFiles} value={files}>
                 {files.map((file) => (
                   <FileMosaic {...file} preview />
                 ))}
               </Dropzone>
+              <h5 className="mt-4">Please upload an image</h5>
             </div>
-            <div className="col-md">
+            <div className="col-md text-center">
               {files.length === 0 ? (
-                <p>Please upload an image</p> // Message if no image is uploaded
+                // <img src="https://www.giantfocal.com/hubfs/GiantFocal_Marketing/Growth_Tools/before-after-comparison.jpg" alt="" />
+                <div
+                className="d-flex align-items-center justify-content-center"
+                style={{ minHeight: "300px", width: "100%" }}
+              >
+                  <img className="img-fluid" src="https://codingartistweb.com/wp-content/uploads/2021/04/image-comparison-slider-01.png" alt="" />
+              </div>
               ) : loading ? (
-                <p>Loading...</p> // Show "Loading..." while waiting for the API response
+                <Loading />
               ) : (
                 <ReactCompareSlider
                   itemOne={
