@@ -22,7 +22,7 @@ function AIComponent() {
       formData.append("image", file);
       setLoading(true);
         const response = await axios.post(
-          "https://backend.morin.id.vn/api/image",
+          "https://project2.trungthanhzone.com/api/image",
           formData,
           {
             headers: {
