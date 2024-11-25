@@ -17,14 +17,10 @@ function AIComponent() {
     setFiles(incomingFiles);
 
     if (incomingFiles.length > 0) {
-      const file = incomingFiles[0].file; // Get the first file
+      const file = incomingFiles[0].file; 
       const formData = new FormData();
       formData.append("image", file);
-
-      setLoading(true); // Set loading state to true while waiting for API response
-
-      try {
-        // Send the image to the API
+      setLoading(true);
         const response = await axios.post(
           "https://backend.morin.id.vn/api/image",
           formData,
@@ -34,15 +30,8 @@ function AIComponent() {
             },
           }
         );
-
-        // Update the processed image URL from the API response
         setApiImageUrl(response.data.url);
-      } catch (error) {
-        console.error("Error uploading the image:", error);
-        alert("Failed to upload the image. Please try again.");
-      } finally {
-        setLoading(false); // Stop loading regardless of success or failure
-      }
+        setLoading(false);
     }
   };
 
