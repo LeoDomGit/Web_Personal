@@ -1,6 +1,12 @@
 *{
   font-family: 'Times New Roman', Times, serif;
 }
+body{
+  background-color: #505050;
+}
+.card {
+  background-color: #fff !important;
+}
 a{
   text-decoration: none;
 }
