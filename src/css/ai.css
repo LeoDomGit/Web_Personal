@@ -4,3 +4,6 @@ body{
 .card {
     background-color: #fff !important;
 }
+a {
+    text-decoration: none;
+}
