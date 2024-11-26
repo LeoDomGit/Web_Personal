@@ -316,8 +316,14 @@ function AIComponent() {
                           width: "auto",
                           margin: "0px auto",
                         }}
-                        src={apiImageUrl2}
-                        alt=""
+                        src={
+                          apiImageUrl2
+                            ? apiImageUrl2
+                            : "https://typli.ai/_next/image?url=%2Fai-text-generator.png&w=1200&q=75"
+                        }
+                        alt={
+                          apiImageUrl2 ? "Generated image" : "Placeholder image"
+                        }
                       />
                     </div>
                   )}
@@ -348,13 +354,11 @@ function AIComponent() {
                   <a href="#remove-bg" className="text-light">
                     Remove Background
                   </a>{" "}
-                 
                 </li>
                 <li>
                   <a href="#compare" className="text-light">
                     Compare Images
                   </a>{" "}
-                 
                 </li>
               </ul>
             </div>
