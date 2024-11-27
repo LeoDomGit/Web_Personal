@@ -46,7 +46,7 @@ function Home() {
             
         </div>
         <div className="col-md-6 mt-3 mb-5">
-        <a href='https://frontend.codingfs.com' target='_blank'>
+        <a href='https://frontend.trungthanhzone.com' target='_blank'>
           <div class="card shadow ">
             <div class="card-body">
               <div className="row">
