@@ -181,6 +181,11 @@ function AIComponent() {
                   ) : (
                     <div className="row mt-4 mb-4">
                       <ReactCompareSlider
+                       style={{
+                        height: "400px",
+                        width: "auto",
+                        margin: "0px auto",
+                      }}
                         itemOne={
                           files.length > 0 ? (
                             <ReactCompareSliderImage
@@ -247,6 +252,11 @@ function AIComponent() {
                   ) : (
                     <div className="row mt-4 mb-4">
                       <ReactCompareSlider
+                       style={{
+                        height: "400px",
+                        width: "auto",
+                        margin: "0px auto",
+                      }}
                         itemOne={
                           apiImageUrl1 ? (
                             <ReactCompareSliderImage
