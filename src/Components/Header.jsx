@@ -4,11 +4,52 @@ import "../css/navbar.css";
 
 function Header() {
   const [search,setSearch] = useState('');
+  const [isListening, setIsListening] = useState(false);
   const submitSearch=()=>{
     if(search!=''){
       window.location.replace('/vu-tru-phim/tim-kiem/'+search)
     }
   }
+  let recognition;
+
+  if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
+    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    recognition = new SpeechRecognition();
+    recognition.continuous = false;
+    recognition.interimResults = false;
+    recognition.lang = 'vi-VN'; // Set the language to Vietnamese, adjust as needed
+  }
+
+  const handleVoiceSearch = () => {
+    if (recognition) {
+      if (isListening) {
+        recognition.stop();
+        setIsListening(false);
+      } else {
+        recognition.start();
+        setIsListening(true);
+
+        recognition.onresult = (event) => {
+          const transcript = event.results[0][0].transcript;
+          setSearch(transcript);
+          submitSearch();
+          setIsListening(false);
+        };
+
+        recognition.onerror = (event) => {
+          console.error('Speech recognition error', event.error);
+          setIsListening(false);
+        };
+
+        recognition.onend = () => {
+          setIsListening(false);
+        };
+      }
+    } else {
+      alert('Voice search is not supported in this browser.');
+    }
+  };
+
   return (
     <>
       <nav className="navbar navbar-expand-sm navbar-dark bg-dark">
@@ -144,15 +185,24 @@ function Header() {
 
             </ul>
             <div className="d-flex">
-              <input
+            <input
                 className="form-control me-2"
                 type="search"
                 placeholder="Search"
                 aria-label="Search"
-                onChange={(e)=>setSearch(e.target.value)}
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
               />
-              <button className="btn btn-outline-success" type="button" onClick={(e)=>submitSearch()}>
+              <button className="btn btn-outline-success me-2" type="button" onClick={() => submitSearch()}>
                 Search
+              </button>
+              <button
+                className={`btn ${isListening ? 'btn-danger' : 'btn-outline-secondary'}`}
+                type="button"
+                onClick={handleVoiceSearch}
+                title="Voice Search"
+              >
+                {isListening ? 'Listening...' : '🎙'}
               </button>
             </div>
           </div>
