@@ -197,7 +197,7 @@ function Header() {
                 Search
               </button>
               <button
-                className={`btn ${isListening ? 'btn-danger' : 'btn-outline-secondary'}`}
+                className={`btn ${isListening ? 'btn-danger' : 'btn-outline-secondary text-light'}`}
                 type="button"
                 onClick={handleVoiceSearch}
                 title="Voice Search"
