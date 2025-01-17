@@ -4,49 +4,65 @@ import "../css/navbar.css";
 
 function Header() {
   const [search,setSearch] = useState('');
-  const [isListening, setIsListening] = useState(false);
-  const submitSearch=()=>{
-    if(search!=''){
-      window.location.replace('/vu-tru-phim/tim-kiem/'+search)
-    }
-  }
+   const [isListening, setIsListening] = useState(false);
   let recognition;
 
+  // Check for Web Speech API support
   if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
     const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
     recognition = new SpeechRecognition();
     recognition.continuous = false;
     recognition.interimResults = false;
-    recognition.lang = 'vi-VN'; // Set the language to Vietnamese, adjust as needed
+    recognition.lang = 'vi-VN'; // Set language to Vietnamese
   }
 
-  const handleVoiceSearch = () => {
-    if (recognition) {
-      if (isListening) {
-        recognition.stop();
-        setIsListening(false);
-      } else {
-        recognition.start();
-        setIsListening(true);
+  const submitSearch = () => {
+    if (search !== '') {
+      window.location.replace('/vu-tru-phim/tim-kiem/' + search);
+    }
+  };
 
-        recognition.onresult = (event) => {
-          const transcript = event.results[0][0].transcript;
-          setSearch(transcript);
-          submitSearch();
-          setIsListening(false);
-        };
+  const handleVoiceSearch = async () => {
+    if (!recognition) {
+      alert('Voice search is not supported in this browser or device.');
+      return;
+    }
 
-        recognition.onerror = (event) => {
-          console.error('Speech recognition error', event.error);
-          setIsListening(false);
-        };
-
-        recognition.onend = () => {
-          setIsListening(false);
-        };
+    // Check microphone permission
+    if (navigator.permissions) {
+      try {
+        const permission = await navigator.permissions.query({ name: 'microphone' });
+        if (permission.state === 'denied') {
+          alert('Microphone access is denied. Please enable it in your device settings.');
+          return;
+        }
+      } catch (error) {
+        console.warn('Permission API not fully supported on this browser.');
       }
+    }
+
+    if (isListening) {
+      recognition.stop();
+      setIsListening(false);
     } else {
-      alert('Voice search is not supported in this browser.');
+      recognition.start();
+      setIsListening(true);
+
+      recognition.onresult = (event) => {
+        const transcript = event.results[0][0].transcript;
+        setSearch(transcript);
+        submitSearch();
+        setIsListening(false);
+      };
+
+      recognition.onerror = (event) => {
+        console.error('Speech recognition error:', event.error);
+        setIsListening(false);
+      };
+
+      recognition.onend = () => {
+        setIsListening(false);
+      };
     }
   };
 
